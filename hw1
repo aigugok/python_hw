@@ -1,0 +1,61 @@
+1)
+int(string,base) - возвращает ошибку, если аргумент не строка или int
+int("12") - 12
+int("12.6") - error
+int(12.6) - 12
+int("True") - строка true не может быть int
+int(True) - , bool - частный случай int
+int("3+5") - error
+a=int("1")
+b=1
+c=int(True)
+a is b is c —> True
+int("100") - 100
+int("100",2) - 4
+int("100",16) - 256
+
+str() - неизменяемый объект
+str(10) - '10'
+str("10") - '10'
+str("'10'") - "'10'
+str(10.1) - '10.1'
+str(True) - 'True'
+str() - ''
+str(print) - '<built-in function print>'
+
+bool() - конвертирует значение в булеан (True/False), используя стандартную проверку на истинность ( ложь- значение ложно или отсуствует и истина, когда значение истинно)
+bool(10) - True
+bool(0) - False
+bool("dddd") - True
+bool("") - False
+bool("False") - True
+bool(False) - False
+bool(-4.4) - True
+
+2)
+В Python2 raw_input - печатала приглашение для пользователя (если пользователь его указал) и без символа новой строки считывала сообщение пользователя, преобразуя его в строку и удаляя при этом завершающую новую строку. В Python3 эту функцию переименовали как input(). Функция input() Python2 не изменяла тип сообщения.
+
+------Python2----------
+»> a=raw_input()
+5.8
+»> type(a)
+<type 'str'>
+»> a=input()
+5.8
+»> type(a)
+<type 'float'>
+»> a=input()
+5.8 is float
+»> type(a)
+<type 'bool'>
+»> a=input()
+True
+»> type(a)
+<type 'bool'>
+»> a=input()
+"True"
+»> type(a)
+<type 'str'>
+
+3)
+https://www.python.org/dev/peps/pep-3105/ - print() в Python3 напечатает все аргументы, не указанные с помощью специальных sep, file в одну строку, в Python2 аргументы разделенные запятые будут отображаться в виде "кортежа".
