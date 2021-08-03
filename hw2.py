@@ -8,5 +8,5 @@
 print(*(dict.fromkeys(input().split(" "))))
 
 #вариант2
-print(" ".join((dict.fromkeys(input().split(" ")))))
+#print(" ".join((dict.fromkeys(input().split(" ")))))
 
