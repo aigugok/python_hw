@@ -1,0 +1,47 @@
+Модуль Pickle позволяет сериализовать(преобразовать в поток байт объекты Python) и десериализовать (из потока байт преобразовать в объект). Поток байт можно записывать в файлы,т е
+загружать и передавать объекты в другие программы. При серелизации объектов собственных классов серелизуется только объект, а не класс (класс импортируется, класс должен находиться в файле, где происходит сериализация объекта).
+Формат данных модуля pickle специфичен для python, то есть десериализация может быть только внутри python-приложений. Существует 6 протоколов 
+0 - человеко-читаемый
+1 - старый двоичный формат
+2 - поддерживает " new-style class" (классы с дескрипторами, слоты, свойства, сатические методы
+3 - поддержка байт-объектов (по умолчанию в Python 3.0–3.7)
+4 - поддержка более больших объектов, добавили новые типы, оптимизацию (по умолчанию в Python 3.8)
+5 - оптимизация передачи данных между потоками
+
+С помощью pickle.dump можно сериализовать объект в окрытый файл.
+'''
+class Employee:
+    def __init__(self,name,age,profession,is_working=True):
+        self.name=name
+        self.age=age
+        self.profession=profession
+        self.is_working=is_working
+    def employee_is_working(self):
+        if (self.is_working):
+            return f"{self.name} is working in the company as an {self.profession}"
+        return f"{self.name} is a former employee, was an {self.profession}"
+
+Mary=Employee("Mary",34,"accountant")
+print(Mary.employee_is_working())
+
+import pickle
+with open('hw14_1.py', 'wb') as f:
+    pickle.dump(Mary, f)
+del(Mary)
+'''
+В это время в файле hw14_1.py запишется 
+'''
+��_       �__main__��Employee���)��}�(�name��Mary��age�K"�
+profession��
+accountant��
+is_working��ub.
+'''
+
+С помощью pickle.load можно десериализовать объект из файла.
+'''
+with open('hw14_1.py', 'rb') as f:
+    data_new = pickle.load(f)
+print(data_new.age)
+'''
+
+Pickle не безопасен, можно серелиазовать вредоносные программы, поэтому лучше использовать либо подписание данных, либо json. В статье на Хабре https://habr.com/ru/company/otus/blog/353480/ разбирается как происходит процесс сериализации-десериализации и что можно подложить в инструкции кода-ассемблера испорт любой библиотеки и вызов вредоносной программы.
