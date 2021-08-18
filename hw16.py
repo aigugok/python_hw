@@ -20,6 +20,10 @@ def gps_data_from_file(filename):
             line=line.replace("'","").replace(";",",")
             print(gps_data_location_and_url(line))
 
+<<<<<<< HEAD
 
 #запуск программы
 # gps_data_from_file("gps_data.txt")
+=======
+gps_data_from_file("gps_data.txt")
+>>>>>>> 28ffba59f5b1c0aea9bec0e32a775ca04b5dd388
