@@ -3,10 +3,8 @@
 def Collatz_hypothesis(n, step=0):
     if (n < 1):
         return "это не натуральное число"
-        return
     if n == 1:
-        return f"Всего получаем {step} шагов."
-        return
+        return step
     if (n % 2 == 0):
         return Collatz_hypothesis(n // 2, step + 1)
     return Collatz_hypothesis(n * 3 + 1, step + 1)
@@ -14,6 +12,6 @@ def Collatz_hypothesis(n, step=0):
 
 try:
     num = int(input())
-    print(Collatz_hypothesis(num))
+    print(f"Всего получаем {Collatz_hypothesis(num)} шагов.")
 except ValueError:
     print("Не удалось преобразовать введенный текст в число.")
