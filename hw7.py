@@ -35,4 +35,5 @@ for line in f.readlines():
     if users[0]=='' and line[2] not in d_guid.keys():
         print(end=",")
     print(end=" ")
+print()
 f.close()
