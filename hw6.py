@@ -18,12 +18,15 @@ def f(var):
 
 
 def generate_decimal_palindroms(palindrom_len):
+    #генерация нечетных цифр (1,3,6,9) - c четных двоичные палиндромы не начинаются
     for i in range(1,len(numbers),2):
         list.append(numbers[i])
     k=1
     len_min =0
     len_max=len(list)
+    #облегчим задачу - сгенерируем половинки палиндромов (из двух цифр и трех)
     while k<palindrom_len//2:
+        #прибавляем к существующим цифрам любую от 0 до 9 и добавляем в список(причем прибавляем только к последним сгенерированным)
         for i in range(len_min,len_max):
             f(list[i])
         k+=1
@@ -31,10 +34,14 @@ def generate_decimal_palindroms(palindrom_len):
         len_max=len(list)
 
 list=[]
+#генерация десятичных 6-значных палиндромов
 generate_decimal_palindroms(6)
 sum=0
+#проверяем является ли десятичный палиндром палиндромов в двоичной системе
 for i in list:
+    #палиндром из четного числа (взяли число и отзеркалили) - вида АВССВА
     is_binary_palindrom(i + i[::-1])
+    # палиндром из нечетного числа чисел (взяли число без последней цифры и отзеркалили) - вида АВСВА
     is_binary_palindrom(i + i[-2::-1])
 print(sum)
 
