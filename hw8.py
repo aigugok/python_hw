@@ -3,13 +3,14 @@
 # если число четное выводит результат деления на 2, если нет - умножает на 3 и прибаляет 1. Если строка путсая или нулевой элемент не содержится в списке numbers возвращает строку "Не удалось преобразовать введенный текст в число."
 numbers=["0","1","2","3","4","5","6","7","8","9"]
 def recursion_func(str,last_val=''):
+    last_val=last_val + str[0]
     if (str and str[0] in numbers):
         if len(str)>1:
-            return (recursion_func(str[1::],last_val+str[0]))
+            return (recursion_func(str[1::],last_val))
         else:
-            if int(last_val+str[0])%2==0:
-                return int(last_val+str[0])//2
-            return int(last_val+str[0])*3+1
+            if int(last_val)%2==0:
+                return int(last_val)//2
+            return int(last_val)*3+1
     else:
         return "Не удалось преобразовать введенный текст в число."
 
